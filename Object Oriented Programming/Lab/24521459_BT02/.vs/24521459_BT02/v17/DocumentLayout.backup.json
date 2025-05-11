@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT02\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0062AB9-83A8-489B-86D5-4F0DD70FA5D1}|Bai05\\Bai05.vcxproj|C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT02\\Bai05\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0062AB9-83A8-489B-86D5-4F0DD70FA5D1}|Bai05\\Bai05.vcxproj|solutionrelative:Bai05\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9236C31-4D4B-40A6-9C06-E1A15895205B}|Bai01\\Bai01.vcxproj|C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT02\\Bai01\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A9236C31-4D4B-40A6-9C06-E1A15895205B}|Bai01\\Bai01.vcxproj|solutionrelative:Bai01\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Source.cpp",
+              "DocumentMoniker": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT02\\Bai05\\Source.cpp",
+              "RelativeDocumentMoniker": "Bai05\\Source.cpp",
+              "ToolTip": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT02\\Bai05\\Source.cpp",
+              "RelativeToolTip": "Bai05\\Source.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-02T05:33:13.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Source.cpp",
+              "DocumentMoniker": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT02\\Bai01\\Source.cpp",
+              "RelativeDocumentMoniker": "Bai01\\Source.cpp",
+              "ToolTip": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT02\\Bai01\\Source.cpp",
+              "RelativeToolTip": "Bai01\\Source.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-02T05:32:57.521Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

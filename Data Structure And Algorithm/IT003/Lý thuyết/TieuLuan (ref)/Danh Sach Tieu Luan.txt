@@ -1,0 +1,38 @@
+YÊU CẦU:
+- Làm theo nhóm
+- Thời gian hoàn toàn: 2-3 tuần.
+- Thời gian báo cáo: Tuần thứ 13, 14, 15 theo đề cương.
+- Nội dung báo cáo: file powerpoint.
+- Hình thức báo cáo: thuyết trình tại lớp.
+- Các nhóm chủ động chọn đề tài và đăng ký báo cáo ĐÚNG KẾ HOẠCH.
+
+DANH SÁCH ĐỀ TÀI TIỂU LUẬN
+Các nhóm chọn 1 đề tài trong các đề tài dưới đây:
+
+1. Tìm hiểu các CTDL&GT có sẵn trong thư viện std (vector, list, stack, queue, algorithm, ...)
+
+Về Cấu trúc dữ liệu:
+2. union-find
+3. Scapegoat tree
+4. Splay tree
+5. Treap
+6. AVL tree
+7. Red-black tree
+8. 2-3-4 tree
+9. B-TRee xóa node
+10. Cấu trúc Heap và ứng dụng
+11. Hàng đợi ưu tiên
+
+
+Về thuật toán:
+9. Thuật toán Dijkstra, Hamilton (GRAPH, Lý thuyết đồ thị)
+10. Những thuật sorting (khác đề cương)
+  + VD: Quicksort: Chọn pivot và các phương pháp phân hoạch
+  + VD: Counting và Radix sort, Shell sort, Shaker sort
+12. Bài toán tô màu, lập lịch
+Về ứng dụng:
+13. Các bài toán thực tế áp dụng cấu trúc cây.
+14. Các bài toán thực tế áp dụng cấu trúc HashTable (Bảng băm).
+
+OR: Sinh viên tự Đề xuất (CTDL&GT)
+
