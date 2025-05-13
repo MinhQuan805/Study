@@ -55,7 +55,83 @@ for (int i = 0; i < m; i++) { //duyệt từng List ứng với mỗi địa ch�
 */
 
 //###INSERT CODE HERE -
+Node *CreateNode(Hocsinh s)
+{
+    Node *p = new Node;
+    if (!p)
+        exit(1);
+    p->data = s;
+    p->next = NULL;
+    return p;
+}
+void AddTail(List &L, Hocsinh hs)
+{
+    Node *p = CreateNode(hs);
+    if (L.head == NULL)
+    {
+        L.head = p;
+        L.tail = L.head;
+    }
+    else
+    {
+        L.tail->next = p;
+        L.tail = p;
+    }
+}
+void initList(List &l)
+{
+    l.head = NULL;
+    l.tail = NULL;
+}
+void CreateHashtable(Hashtable &H, int m)
+{
+    H.table = new List[m];
+    H.M = m;
+    for (int i = 0; i < m; i++)
+    {
+        initList(H.table[i]);
+    }
+    H.n = 0;
+}
+void DeleteList(List &L)
+{
+    Node *p = L.head;
+    while (p)
+    {
+        Node *temp = p;
+        p = p->next;
+        delete temp;
+    }
+    L.head = NULL;
+    L.tail = NULL;
+}
 
+void DeleteHashtable(Hashtable &H)
+{
+    for (int i = 0; i < H.M; i++)
+    {
+        DeleteList(H.table[i]);
+    }
+    delete[] H.table;
+    H.table = NULL;
+    H.n = 0;
+    H.M = 0;
+}
+
+Node* Search(Hashtable H, int k) {
+    Node* p;
+    for (int i = 0; i < H.M; i++) {
+        List l = H.table[i];
+        if (l.head) {
+            p = l.head;
+            while (p) {
+                if ((p->data).Maso == k) {return p;}
+                p = p->next;
+            }
+        }
+    }
+    return p;
+}
 int main()
 {
     Hashtable hashtable;

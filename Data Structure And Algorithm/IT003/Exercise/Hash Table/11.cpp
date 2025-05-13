@@ -136,6 +136,13 @@ void PrintList(List l)
     }
     cout << endl;
 }
+void PrintHashtable(Hashtable H)
+{
+    for (int i = 0; i < H.M; i++)
+    {
+        PrintList(H.table[i]);
+    }
+}
 void DeleteList(List &L)
 {
     Node *p = L.head;
@@ -159,13 +166,6 @@ void DeleteHashtable(Hashtable &H)
     H.table = NULL;
     H.n = 0;
     H.M = 0;
-}
-void PrintHashtable(Hashtable H)
-{
-    for (int i = 0; i < H.M; i++)
-    {
-        PrintList(H.table[i]);
-    }
 }
 int main()
 {
