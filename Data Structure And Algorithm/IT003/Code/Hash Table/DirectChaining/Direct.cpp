@@ -149,7 +149,7 @@ void InsertTable(HASHTABLE &H, int key)
     AddTail(L, key);
 }
 
-void PrintTable(HASHTABLE H)
+void PrintHashTable(HASHTABLE H)
 {
     for (int i = 0; i < H.M; i++)
     {
@@ -158,6 +158,40 @@ void PrintTable(HASHTABLE H)
         PrintList(l);
     }
 }
+
+// Hàm DeleteHashtable(hashtable) xóa toàn bộ bảng băm
+// {
+//     Duyệt từng địa chỉ hay còn hiểu là duyệt từng List
+//         Ứng với mỗi List, xóa toàn bộ node trong danh sách, vì 2 con trỏ head, tail là biến tĩnh nên chỉ có thể gán về NULL
+//     Xóa vùng nhớ của mảng các List (vì cũng là mảng động), cũng nên gán lại con trỏ table về NULL cho an toàn
+//     Reset các thuộc tính còn lại của bảng băm
+
+// }
+void DeleteList(LIST &L)
+{
+    Node *p = L.pHead;
+    while (p)
+    {
+        Node *temp = p;
+        p = p->pNext;
+        delete temp;
+    }
+    L.pHead = NULL;
+    L.pTail = NULL;
+}
+
+void DeleteHashtable(HASHTABLE &H)
+{
+    for (int i = 0; i < H.M; i++)
+    {
+        DeleteList(H.table[i]);
+    }
+    delete[] H.table;
+    H.table = NULL;
+    H.n = 0;
+    H.M = 0;
+}
+
 int main()
 {
     HASHTABLE ht;
@@ -173,6 +207,7 @@ int main()
         InsertTable(ht, x);
     }
     cout << endl;
-    PrintTable(ht);
+    PrintHashTable(ht);
+    DeleteHashtable(ht);
     return 0;
 }
