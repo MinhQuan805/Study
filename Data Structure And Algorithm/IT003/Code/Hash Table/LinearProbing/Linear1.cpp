@@ -1,64 +1,154 @@
 #include <iostream>
-#include <vector>
-using namespace std;
-struct HASHTABLE
-{
-    int n;
-    vector<int> table;
-};
-// Hash Function
-int Hash(HASHTABLE ht, int key, int i) { return (key + i) % ht.n; }
+#include <string>
 
-// Tạo Hash Table
-void CreateEmptyHashTable(HASHTABLE &H)
+#define LOAD 0.7
+#define EMPTY 0
+#define DELETE -1
+using namespace std;
+
+struct Hocsinh
 {
-    cout << "Nhap Kich Thuoc Bang Bam: ";
-    cin >> H.n;
-    H.table = vector<int>(H.n, -1);
+    int Maso;
+    string Hoten;
+    int Namsinh;
+    bool Gioitinh;
+    double TBK;
+};
+
+struct Hashtable
+{
+    int M; // Kich thuoc bang bam
+    int n; // so phan tu trong bang bam
+    Hocsinh *table;
+};
+void Input(Hocsinh &x)
+{
+    cin >> x.Maso;
+    getline(cin >> ws, x.Hoten);
+    cin >> x.Namsinh;
+    cin >> x.Gioitinh;
+    cin >> x.TBK;
 }
 
-void InsertTable(HASHTABLE &H, int key)
+// ###INSERT CODE HERE -
+
+// Tạo Hash Table mới
+void CreateHashtable(Hashtable &H, int m)
 {
-    int i = 0;
-    while (i < H.n)
+    H.table = new Hocsinh[m];
+    H.M = m;
+    for (int i = 0; i < m; i++)
     {
-        int j = Hash(H, key, i);
-        if (H.table[j] != -1)
+        H.table[i].Maso = EMPTY;
+    }
+    H.n = 0;
+}
+
+// Hash Function
+int Hash(Hashtable H, int x, int i) { return (x + i) % H.M; }
+
+// Hàm thêm phần tử
+void Insert(Hashtable &H, Hocsinh hs)
+{
+    if (H.n <= LOAD * H.M)
+    {
+        int i = 0;
+        do
         {
+            int key = Hash(H, hs.Maso, i);
+            if (H.table[key].Maso == EMPTY || H.table[key].Maso == DELETE)
+            {
+                H.table[key] = hs;
+                H.n++;
+                return;
+            }
             i++;
-        }
-        else
+        } while (i < H.M);
+    }
+}
+
+// Hàm in table
+void PrintHashtable(Hashtable H)
+{
+    for (int i = 0; i < H.M; i++)
+    {
+        Hocsinh hs = H.table[i];
+        cout << '[' << hs.Maso << ",  " << hs.Hoten << "  , " << hs.Gioitinh << ", " << hs.Namsinh << ", " << hs.TBK << "]\n";
+    }
+}
+
+// Hàm giải phóng bộ nhớ
+void DeleteHashtable(Hashtable &H)
+{
+    delete[] H.table;
+    H.table = NULL;
+    H.n = 0;
+    H.M = 0;
+}
+
+// Hàm xóa 1 phần tử
+void Delete(Hashtable &H, int x)
+{
+    for (int i = 0; i < H.M; i++)
+    {
+        int key = Hash(H, x, i);
+        if (H.table[key].Maso == x)
         {
-            H.table[j] = key;
+            H.table[key].Maso = DELETE;
+            H.table[key].Hoten = "";
+            H.table[key].Namsinh = 0;
+            H.table[key].Gioitinh = 0;
+            H.table[key].TBK = 0;
+            H.n--;
             return;
         }
+        if (H.table[key].Maso == EMPTY)
+            break;
     }
+    cout << "Khong Xoa Duoc" << endl;
 }
 
-void PrintTable(HASHTABLE H)
+// Hàm tìm 1 phần tử
+int Search(Hashtable H, int maso)
 {
-    for (int i = 0; i < H.n; i++)
+    for (int i = 0; i < H.M; i++)
     {
-        cout << "(" << i << ") ";
-        cout << H.table[i];
-        cout << endl;
+        int key = Hash(H, maso, i);
+        if (H.table[key].Maso == maso)
+            return key;
+        if (H.table[key].Maso == EMPTY)
+            break;
     }
+    return -1;
 }
+
 int main()
 {
-    HASHTABLE ht;
-    CreateEmptyHashTable(ht);
-    int n;
-    cout << "Nhap So Luong Phan Tu: ";
+    Hashtable hashtable;
+
+    int m, n;
+    Hocsinh hs;
+
+    cin >> m;
+    CreateHashtable(hashtable, m);
     cin >> n;
-    int x;
     for (int i = 0; i < n; i++)
     {
-        cout << "Phan tu thu " << i + 1 << " : ";
-        cin >> x;
-        InsertTable(ht, x);
+        Input(hs);
+        Insert(hashtable, hs);
     }
-    cout << endl;
-    PrintTable(ht);
+    PrintHashtable(hashtable);
+    int x;
+    cout << "Nhap Ma So Sinh Vien Muon Xoa: ";
+    cin >> x;
+    Delete(hashtable, x);
+    cout << "Danh Sach Sinh Vien Sau Khi Xoa" << endl;
+    PrintHashtable(hashtable);
+    cout << "Nhap Lai Danh Sach Sinh Vien\n";
+    Input(hs);
+    Insert(hashtable, hs);
+    cout << "Danh Sach Sinh Vien Sau Khi Them" << endl;
+    PrintHashtable(hashtable);
+    DeleteHashtable(hashtable);
     return 0;
 }
