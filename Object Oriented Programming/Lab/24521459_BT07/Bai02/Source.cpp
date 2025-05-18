@@ -3,16 +3,14 @@
 int main() {
     CHonSo a, b;
     cout << "Nhap Hon So a" << endl;
-    a.Nhap();
+    cin >> a;
     cout << endl;
     cout << "Nhap Hon So b" << endl;
-    b.Nhap();
+    cin >> b;
     cout << endl;
-    cout << "a = ";
-    a.Xuat();
+    cout << "a = " << a;
     cout << endl;
-    cout << "b = ";
-    b.Xuat();
+    cout << "b = " << b;
     cout << endl;
 
     if (a == b) cout << "a bang b" << endl;

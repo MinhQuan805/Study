@@ -67,14 +67,19 @@ bool CPhanSo::operator!=(const CPhanSo& PS) {
         return true;
     return false;
 }
-void CPhanSo::Nhap() {
-    cout << "Nhap Tu So: ";
-    cin >> tu;
+istream& operator>>(istream& is, CPhanSo& PS) {
+    cout << "Nhap tu so: ";
+    is >> PS.tu;
     do {
-        cout << "Nhap Mau So: ";
-        cin >> mau;
-    } while (mau == 0);
+        cout << "Nhap mau so (khac 0): ";
+        is >> PS.mau;
+    } while (PS.mau == 0);
+    return is;
 }
-void CPhanSo::Xuat() {
-    cout << tu << "/" << mau << endl;
+
+ostream& operator<<(ostream& os, const CPhanSo& PS) {
+    CPhanSo temp = PS;
+    temp.RutGon();
+    os << temp.tu << "/" << temp.mau << endl;
+    return os;
 }

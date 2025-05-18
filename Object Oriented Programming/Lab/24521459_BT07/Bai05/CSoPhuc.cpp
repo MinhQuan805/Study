@@ -6,37 +6,47 @@ float CSoPhuc::MoDun() const {
     return sqrt(thuc * thuc + ao * ao);
 }
 
-bool CSoPhuc::operator==(const CSoPhuc& sp) {
-    return MoDun() == sp.MoDun();
+bool CSoPhuc::operator==(const CSoPhuc& SP) {
+    return MoDun() == SP.MoDun();
 }
 
-bool CSoPhuc::operator!=(const CSoPhuc& sp) {
-    return MoDun() != sp.MoDun();
+bool CSoPhuc::operator!=(const CSoPhuc& SP) {
+    return MoDun() != SP.MoDun();
 }
 
-bool CSoPhuc::operator>(const CSoPhuc& sp) {
-    return MoDun() > sp.MoDun();
+bool CSoPhuc::operator>(const CSoPhuc& SP) {
+    return MoDun() > SP.MoDun();
 }
 
-bool CSoPhuc::operator<(const CSoPhuc& sp) {
-    return MoDun() < sp.MoDun();
+bool CSoPhuc::operator<(const CSoPhuc& SP) {
+    return MoDun() < SP.MoDun();
 }
 
-bool CSoPhuc::operator>=(const CSoPhuc& sp) {
-    return MoDun() >= sp.MoDun();
+bool CSoPhuc::operator>=(const CSoPhuc& SP) {
+    return MoDun() >= SP.MoDun();
 }
 
-bool CSoPhuc::operator<=(const CSoPhuc& sp) {
-    return MoDun() <= sp.MoDun();
+bool CSoPhuc::operator<=(const CSoPhuc& SP) {
+    return MoDun() <= SP.MoDun();
 }
 
-void CSoPhuc::Xuat() {
-    if (ao == 1)
-        cout << thuc << " + " << "i" << endl;
-    else if (ao > 0)
-        cout << thuc << " + " << ao << "i" << endl;
-    else if (ao < 0)
-        cout << thuc << " - " << -ao << "i" << endl;
-    else if (ao == 0)
-        cout << thuc << endl;
+ostream& operator<<(ostream& os, CSoPhuc& SP)
+{
+    if (SP.ao == 1)
+        os << SP.thuc << " + i \n";
+    else if (SP.ao > 0)
+        os << SP.thuc << " + " << SP.ao << "i \n";
+    else if (SP.ao < 0)
+        os << SP.thuc << " - " << -SP.ao << "i\n";
+    else
+        os << SP.thuc;
+    return os;
+}
+istream& operator>>(istream& is, CSoPhuc& SP)
+{
+    cout << "Nhap Phan Thuc: ";
+    is >> SP.thuc;
+    cout << "Nhap Phan Ao: ";
+    is >> SP.ao;
+    return is;
 }

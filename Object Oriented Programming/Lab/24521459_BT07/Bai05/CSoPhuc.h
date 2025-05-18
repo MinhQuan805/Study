@@ -15,5 +15,6 @@ public:
     bool operator<(const CSoPhuc& sp);
     bool operator>=(const CSoPhuc& sp);
     bool operator<=(const CSoPhuc& sp);
-    void Xuat();
+    friend ostream& operator<<(ostream& os, CSoPhuc&);
+    friend istream& operator>>(istream& is, CSoPhuc& SP);
 };

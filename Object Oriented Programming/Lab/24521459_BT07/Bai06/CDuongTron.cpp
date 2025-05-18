@@ -3,7 +3,7 @@
 CDuongTron::CDuongTron(float r) : r(r) {}
 
 float CDuongTron::DienTich() const {
-    return 3.14 * r * r; 
+    return 3.14f * r * r;
 }
 
 bool CDuongTron::operator==(const CDuongTron& O) {
@@ -30,6 +30,12 @@ bool CDuongTron::operator<=(const CDuongTron& O) {
     return DienTich() <= O.DienTich();
 }
 
-void CDuongTron::Xuat() {
-    cout << "Ban kinh la " << r << " va dien tich la " << DienTich() << endl;
+istream& operator>>(istream& is, CDuongTron& O) {
+    is >> O.r;
+    return is;
+}
+
+ostream& operator<<(ostream& os, const CDuongTron& O) {
+    os << "Ban kinh la " << O.r << ", Dien tich la " << O.DienTich() << endl;
+    return os;
 }

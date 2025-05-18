@@ -7,13 +7,13 @@ private:
     int tu, mau;
 public:
     CPhanSo(int tu = 0, int mau = 1);
-    void Nhap();
     void RutGon();
+    friend istream& operator>>(istream&, CPhanSo&);
+    friend ostream& operator<<(ostream&, const CPhanSo&);
     bool operator==(const CPhanSo&);
     bool operator>(const CPhanSo&);
     bool operator<(const CPhanSo&);
     bool operator>=(const CPhanSo&);
     bool operator<=(const CPhanSo&);
     bool operator!=(const CPhanSo&);
-    void Xuat();
 };

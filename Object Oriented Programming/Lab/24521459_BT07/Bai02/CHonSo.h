@@ -7,12 +7,12 @@ private:
     int nguyen, tu, mau;
 public:
     CHonSo(int tu = 0, int mau = 1);
-    void Nhap();
     bool operator==(const CHonSo&);
     bool operator>(const CHonSo&);
     bool operator<(const CHonSo&);
     bool operator>=(const CHonSo&);
     bool operator<=(const CHonSo&);
     bool operator!=(const CHonSo&);
-    void Xuat();
+    friend istream& operator>>(istream& is, CHonSo&);
+    friend ostream& operator<<(ostream& os, CHonSo&);
 };

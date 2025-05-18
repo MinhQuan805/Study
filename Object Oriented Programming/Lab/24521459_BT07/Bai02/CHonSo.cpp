@@ -44,16 +44,18 @@ bool CHonSo::operator!=(const CHonSo& PS) {
         return true;
     return false;
 }
-void CHonSo::Nhap() {
+istream& operator>>(istream& is, CHonSo& X) {
     cout << "Nhap So Nguyen: ";
-    cin >> nguyen;
+    is >> X.nguyen;
     cout << "Nhap Tu So: ";
-    cin >> tu;
+    is >> X.tu;
     do {
         cout << "Nhap Mau So: ";
-        cin >> mau;
-    } while (mau == 0);
+        is >> X.mau;
+    } while (X.mau == 0);
+    return is;
 }
-void CHonSo::Xuat() {
-    cout << nguyen << " " << tu << "/" << mau << endl;
+ostream& operator<<(ostream& os, CHonSo& X) {
+    os << X.nguyen << " " << X.tu << "/" << X.mau << endl;
+    return os;
 }

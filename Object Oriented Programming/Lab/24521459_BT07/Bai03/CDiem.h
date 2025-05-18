@@ -15,6 +15,6 @@ public:
     bool operator<(const CDiem&) const;
     bool operator>=(const CDiem&) const;
     bool operator<=(const CDiem&) const;
-    void Nhap();
-    void Xuat();
+    friend istream& operator>>(istream&, CDiem&);
+    friend ostream& operator<<(ostream&, const CDiem&);
 };

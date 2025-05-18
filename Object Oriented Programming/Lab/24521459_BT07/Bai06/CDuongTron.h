@@ -14,5 +14,6 @@ public:
     bool operator<(const CDuongTron& O);
     bool operator>=(const CDuongTron& O);
     bool operator<=(const CDuongTron& O);
-    void Xuat();
+    friend istream& operator>>(istream& is, CDuongTron&);
+    friend ostream& operator<<(ostream& os, const CDuongTron&);
 };

@@ -1,205 +1,117 @@
+
 #include <iostream>
 
 using namespace std;
-struct Node
+struct TNODE
 {
     int key;
-    Node *pNext;
+    TNODE *pLeft;
+    TNODE *pRight;
 };
-struct LIST
-{
-    Node *pHead, *pTail;
-};
-struct HASHTABLE
-{
-    int M;
-    int n;
-    LIST *table;
-};
+typedef TNODE *TREE;
 
-// Tạo Danh Sách Liên Kết
-void CreateEmptyList(LIST &l)
+void CreateEmptyTree(TREE &T)
 {
-    l.pHead = NULL;
-    l.pTail = NULL;
+    T = NULL;
 }
-
-// Tạo Node mới
-Node *CreateNode(int x)
+TNODE *CreateTNode(int x)
 {
-    Node *p = new Node;
-    if (!p)
-        exit(1);
-    p->key = x;
-    p->pNext = NULL;
+    TNODE *p = new TNODE; // cấp phát vùng nhớ động
+    p->key = x;           // gán trường dữ liệu của node = x
+    p->pLeft = NULL;
+    p->pRight = NULL;
     return p;
 }
-
-// Thêm vào đầu danh sách
-void AddHead(LIST &l, int x)
+int Insert(TREE &T, TNODE *p)
 {
-    Node *p = CreateNode(x);
-    if (!l.pHead)
+    if (T)
     {
-        l.pHead = p;
-        l.pTail = l.pHead;
+        if (T->key == p->key)
+            return 0;
+        if (T->key > p->key)
+            return Insert(T->pLeft, p);
+        return Insert(T->pRight, p);
     }
-    else
-    {
-        p->pNext = l.pHead;
-        l.pHead = p;
-    }
+    T = p;
+    return 1;
 }
-
-// Thêm phần tử vào cuối
-void AddTail(LIST &l, int x)
-{
-    Node *p = CreateNode(x);
-    if (!l.pHead)
-    {
-        l.pHead = p;
-        l.pTail = l.pHead;
-    }
-    else
-    {
-        l.pTail->pNext = p;
-        l.pTail = p;
-    }
-}
-
-// Tạo danh sách
-void CreateList(LIST &l)
+void CreateTree(TREE &T)
 {
     int x;
-    cin >> x;
-    if (x == -1)
+    do
     {
+        cin >> x;
+        if (x == -1)
+            break;
+        Insert(T, CreateTNode(x));
+    } while (true);
+}
+
+TNODE *FindParent(TREE Root, const int &x)
+{
+    if (Root == NULL)
+        return NULL;
+    if (Root->key == x)
+        return NULL;
+
+    TNODE *pre = NULL;
+    TNODE *p = Root;
+    while (p != NULL)
+    {
+        if (x == p->key)
+            return pre;
+        pre = p;
+        if (x < p->key)
+            p = p->pLeft;
+        else
+            p = p->pRight;
+    }
+    return NULL;
+}
+void FindSiblings(TREE T, int x)
+{
+    if (T == NULL)
+    {
+        cout << "Empty Tree.";
         return;
     }
-    while (x != -1)
-    {
-        AddTail(l, x);
-        cin >> x;
-    }
-}
 
-// Tìm Node có giá trị x
-Node *SearchNode(LIST &l, int x)
-{
-    Node *p = l.pHead;
-    while (p && p->key != x)
+    if (T->key == x)
     {
-        p = p->pNext;
+        cout << x << " is Root.";
+        return;
     }
-    return p;
-}
 
-// Xóa các Node có giá trị x
-bool DeleteNode(LIST &l, int x)
-{
-    Node *curr = l.pHead;
-    Node *dummy = new Node;
-    dummy->pNext = l.pHead;
-    Node *prev = dummy;
-    bool deleted = false;
-    while (curr)
+    TREE parent = FindParent(T, x);
+    if (parent == NULL)
     {
-        if (curr->key == x)
-        {
-            prev->pNext = curr->pNext;
-            delete curr;
-            curr = prev->pNext;
-            deleted = true;
-        }
+        cout << "Not found " << x << ".";
+        return;
+    }
+
+    if (parent->pLeft && parent->pRight)
+    {
+        if (parent->pLeft->key == x)
+            cout << parent->pLeft->key << " and " << parent->pRight->key << " are siblings.";
         else
-        {
-            prev = curr;
-            curr = curr->pNext;
-        }
-    }
-    l.pHead = dummy->pNext;
-    if (!l.pHead)
-        l.pTail = NULL;
-    else if (prev->pNext == NULL)
-        l.pTail = prev;
-    return deleted;
-}
-// Thêm Node vào linked list
-void InsertNode(LIST &l, int x, int k)
-{
-    // k là vị trí chèn
-    Node *p = CreateNode(x);
-    Node *dummy = l.pHead;
-    int i = 0;
-    while (i < k && dummy->pNext)
-    {
-        dummy = dummy->pNext;
-        i++;
-    }
-
-    p->pNext = dummy->pNext;
-    dummy->pNext = p;
-
-    if (!p->pNext)
-        l.pTail = p;
-}
-
-// In ra danh sách
-void PrintList(LIST l)
-{
-    Node *p;
-    if (l.pHead == NULL)
-    {
-        cout << "Empty List.";
+            cout << parent->pLeft->key << " and " << parent->pRight->key << " are siblings.";
     }
     else
     {
-        p = l.pHead;
-        while (p)
-        {
-            cout << p->key << " ";
-            p = p->pNext;
-        }
+        cout << x << " has no siblings.";
     }
-    cout << endl;
-}
-// Hash Function
-int Hash(HASHTABLE ht, int key) { return key % ht.M; }
-
-// Tạo Hash Table
-void CreateEmptyHashTable(HASHTABLE &H)
-{
-    cin >> H.M;
-    H.table = new LIST[H.M];
-    for (int i = 0; i < H.M; i++)
-    {
-        CreateEmptyList(H.table[i]);
-    }
-}
-
-void Delete(HASHTABLE &H, int key)
-{
 }
 
 int main()
 {
-    LIST L;
-    CreateEmptyList(L);
-    CreateList(L);
-    cout << "Danh Sach Ban Dau: ";
-    PrintList(L);
-    bool deleted = DeleteNode(L, 5);
-    if (!deleted)
-        cout << "Khong Xoa Duoc Phan Tu";
-    else
-    {
-        cout << "Danh Sach sau khi xoa: ";
-        PrintList(L);
-        cout << endl;
-    }
+    TREE T;   // hay: TNODE* T;
+    T = NULL; // Khoi tao cay T rong, or: CreateEmptyTree(T)
+    CreateTree(T);
 
-    InsertNode(L, 3, 10);
-    cout << "Danh Sach sau khi them la: ";
-    PrintList(L);
+    int x;
+    cin >> x;
+
+    FindSiblings(T, x);
+
     return 0;
 }

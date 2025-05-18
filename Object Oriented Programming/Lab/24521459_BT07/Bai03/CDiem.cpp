@@ -30,13 +30,15 @@ bool CDiem::operator<=(const CDiem& d) const {
     return KhoangCach() <= d.KhoangCach();
 }
 
-void CDiem::Nhap() {
+istream& operator>>(istream& is, CDiem& X) {
     cout << "Nhap x: ";
-    cin >> x;
+    is >> X.x;
     cout << "Nhap y: ";
-    cin >> y;
+    is >> X.y;
+    return is;
 }
 
-void CDiem::Xuat() {
-    cout << "(" << x << ", " << y << ")" << endl;
+ostream& operator<<(ostream& os, const CDiem& X) {
+    os << "(" << X.x << ", " << X.y << ")" << endl;
+    return os;
 }

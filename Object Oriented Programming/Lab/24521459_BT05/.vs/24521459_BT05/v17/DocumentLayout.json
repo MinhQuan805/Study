@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{40AD9643-3C5F-4286-BC25-94927AE2BC84}|Bai09\\Bai09.vcxproj|C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai09\\CDuongThang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{40AD9643-3C5F-4286-BC25-94927AE2BC84}|Bai09\\Bai09.vcxproj|solutionrelative:Bai09\\CDuongThang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{40AD9643-3C5F-4286-BC25-94927AE2BC84}|Bai09\\Bai09.vcxproj|C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai09\\CDuongThang.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{40AD9643-3C5F-4286-BC25-94927AE2BC84}|Bai09\\Bai09.vcxproj|solutionrelative:Bai09\\CDuongThang.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40AD9643-3C5F-4286-BC25-94927AE2BC84}|Bai09\\Bai09.vcxproj|C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai09\\CDuongThang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{40AD9643-3C5F-4286-BC25-94927AE2BC84}|Bai09\\Bai09.vcxproj|solutionrelative:Bai09\\CDuongThang.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{94BBC1E0-D9A8-4571-BABE-E6044CD60463}|Bai08\\Bai08.vcxproj|C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai08\\CDonThuc.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{94BBC1E0-D9A8-4571-BABE-E6044CD60463}|Bai08\\Bai08.vcxproj|solutionrelative:Bai08\\CDonThuc.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,20 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "CDonThuc.cpp",
+              "DocumentMoniker": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai08\\CDonThuc.cpp",
+              "RelativeDocumentMoniker": "Bai08\\CDonThuc.cpp",
+              "ToolTip": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai08\\CDonThuc.cpp*",
+              "RelativeToolTip": "Bai08\\CDonThuc.cpp*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-14T09:24:49.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "CDuongThang.cpp",
               "DocumentMoniker": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai09\\CDuongThang.cpp",
               "RelativeDocumentMoniker": "Bai09\\CDuongThang.cpp",
@@ -30,11 +47,12 @@
               "RelativeToolTip": "Bai09\\CDuongThang.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-07T00:39:24.193Z"
+              "WhenOpened": "2025-05-07T00:39:24.193Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CDuongThang.h",
               "DocumentMoniker": "C:\\Minh Quan\\Study\\Object Oriented Programming\\Lab\\24521459_BT05\\Bai09\\CDuongThang.h",
               "RelativeDocumentMoniker": "Bai09\\CDuongThang.h",

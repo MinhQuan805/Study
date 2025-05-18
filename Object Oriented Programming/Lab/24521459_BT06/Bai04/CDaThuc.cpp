@@ -10,23 +10,12 @@ istream& operator>>(istream& is, CDaThuc& F) {
 	return is;
 }
 ostream& operator<<(ostream& os, const CDaThuc F) {
-	os << F.a[F.n] << "x^" << F.n;
-	for (int i = F.n - 1; i >= 0; i--) {
-		if (F.a[i] != 0) {
-			if (F.a[i] >= 0) {
-				os << " + ";
-				os << F.a[i];
-			}
-			else {
-				os << " - ";
-				os << -F.a[i];
-			}
-			if (i != 0) {
-				os << "x^";
-				os << i;
-			}
-		}
+	for (int i = F.n; i > 0; i--) {
+		os << F.a[i] << "x^" << i;
+		if (F.a[i - 1] >= 0)
+			os << "+";
 	}
+	os << F.a[0];
 	return os;
 }
 int LonNhat(int a, int b) {

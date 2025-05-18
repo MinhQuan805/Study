@@ -3,16 +3,14 @@
 int main() {
     CDiem a, b;
     cout << "Nhap diem A" << endl;
-    a.Nhap();
+    cin >> a;
     cout << endl;
     cout << "Nhap diem B" << endl;
-    b.Nhap();
+    cin >> b;
     cout << endl;
-    cout << "A = ";
-    a.Xuat();
+    cout << "A = " << a;
     cout << endl;
-    cout << "B = ";
-    b.Xuat();
+    cout << "B = " << b;
     cout << endl;
 
     if (a == b) cout << "A bang B" << endl;
