@@ -138,6 +138,119 @@ void InsertNode(LIST &l, int x, int k)
     if (!p->pNext)
         l.pTail = p;
 }
+// Selection Sort For Linked List
+void Swap(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void SelectionSort(LIST &L)
+{
+    Node *p, *q, *min;
+    p = L.pHead;
+    while (p != NULL && p->pNext != NULL)
+    {
+        min = p;
+        q = p->pNext;
+        while (q != NULL)
+        {
+            if (q->key < min->key)
+                min = q;
+            q = q->pNext;
+        }
+        if (min != p)
+            Swap(min->key, p->key);
+        p = p->pNext;
+    }
+}
+
+// Quick Sort For Linked List
+Node *SeparateHead(LIST &L)
+{
+    if (!L.pHead)
+        return NULL;
+    Node *p = L.pHead;
+    L.pHead = L.pHead->pNext;
+    if (!L.pHead)
+        L.pTail = NULL;
+    p->pNext = NULL;
+    return p;
+}
+
+void Partition(LIST &L, LIST &L1, LIST &L2, Node *&pivot)
+{
+    Node *p;
+    while (L.pHead != NULL)
+    {
+        p = SeparateHead(L);
+        if (p->key <= pivot->key)
+            AddTail(L1, p->key);
+        else
+            AddTail(L2, p->key);
+    }
+}
+void Join(LIST &L, LIST L1, LIST L2, Node *&pivot)
+{
+    CreateEmptyList(L);
+    if (L1.pHead)
+    {
+        L.pHead = L1.pHead;
+        L.pTail = L1.pTail;
+    }
+    if (L.pTail)
+    {
+        L.pTail->pNext = pivot;
+    }
+    else
+    {
+        L.pHead = pivot;
+    }
+    L.pTail = pivot;
+    L.pTail->pNext = NULL;
+
+    if (L2.pHead)
+    {
+        L.pTail->pNext = L2.pHead;
+        L.pTail = L2.pTail;
+    }
+}
+void QuickSort_Ascending(LIST &L)
+{
+    if (L.pHead == NULL)
+    {
+        return;
+    }
+    LIST L1, L2;
+    CreateEmptyList(L1);
+    CreateEmptyList(L2);
+    Node *pivot = SeparateHead(L);
+    Partition(L, L1, L2, pivot);
+    QuickSort_Ascending(L1);
+    QuickSort_Ascending(L2);
+    Join(L, L1, L2, pivot);
+}
+
+// Reverse Linked List
+void Reverse(LIST &L)
+{
+    if (!L.pHead || !L.pHead->pNext)
+        return;
+
+    Node *prev = NULL, *curr = L.pHead, *next = NULL;
+    L.pTail = L.pHead;
+
+    while (curr != NULL)
+    {
+        next = curr->pNext;
+        curr->pNext = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    L.pHead = prev;
+}
 
 // In ra danh sách
 void PrintList(LIST l)
@@ -159,6 +272,19 @@ void PrintList(LIST l)
     cout << endl;
 }
 
+// Giải phóng bộ nhớ danh sách
+void FreeList(LIST &l)
+{
+    Node *p;
+    while (l.pHead != NULL)
+    {
+        p = l.pHead;
+        l.pHead = l.pHead->pNext;
+        delete p;
+    }
+    l.pTail = NULL;
+}
+
 int main()
 {
     LIST L;
@@ -174,9 +300,7 @@ int main()
     bool deleted = DeleteNode(L, x);
     if (!deleted)
     {
-        cout << "Khong Xoa Duoc Phan Tu";
-        PrintList(L);
-        cout << endl;
+        cout << "Khong Xoa Duoc Phan Tu " << x << endl;
     }
     else
     {
@@ -192,6 +316,14 @@ int main()
     cin >> k;
     InsertNode(L, n, k);
     cout << "Danh Sach sau khi them la: ";
+    PrintList(L);
+
+    cout << "Danh Sach sau khi dao nguoc: ";
+    Reverse(L);
+    PrintList(L);
+    cout << endl;
+    SelectionSort(L);
+    cout << "Danh Sach sau khi sap xep tang dan: ";
     PrintList(L);
     return 0;
 }
